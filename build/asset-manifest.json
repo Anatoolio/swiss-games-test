@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.906c009d.css",
+    "main.js": "/static/js/main.36f60080.js",
+    "static/media/Rectangle39610.webp": "/static/media/Rectangle39610.3c61546f06771a8f84df.webp",
+    "static/media/rocket.svg": "/static/media/rocket.bf2dbb7c0c33ada062ba83af3725edbe.svg",
+    "static/media/Rectangle39627.webp": "/static/media/Rectangle39627.644dd6b36c574596e76e.webp",
+    "static/media/Rectangle39613.webp": "/static/media/Rectangle39613.6f85cf16b8699fe10a61.webp",
+    "static/media/Rectangle396278.webp": "/static/media/Rectangle396278.c12e86fa01218a96f8b8.webp",
+    "static/media/Rectangle39625.webp": "/static/media/Rectangle39625.b17ec960e6a00fb92dc4.webp",
+    "static/media/EARTH.webp": "/static/media/EARTH.f489c88c01c59d539c4b.webp",
+    "static/media/GroupLogo.svg": "/static/media/GroupLogo.f4153131d3955bdfa609912a9f3b5caf.svg",
+    "static/media/LOGO.svg": "/static/media/LOGO.abb7e9ca6e1d2224fa9253c60ef4cfb6.svg",
+    "static/media/bin_hover.svg": "/static/media/bin_hover.130703b7b0cf9871648ffbe073cd6187.svg",
+    "static/media/bin.svg": "/static/media/bin.5fdc8f10c95015c32240615c1ad34fbf.svg",
+    "index.html": "/index.html",
+    "main.906c009d.css.map": "/static/css/main.906c009d.css.map",
+    "main.36f60080.js.map": "/static/js/main.36f60080.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.906c009d.css",
+    "static/js/main.36f60080.js"
+  ]
+}

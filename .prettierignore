@@ -1,0 +1,19 @@
+node_modules/
+build/
+coverage/
+.cache/
+dist/
+
+# Lockfiles and package manager state
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Generated
+*.min.*
+*.map
+
+# VCS
+.git/
+.hg/
+
