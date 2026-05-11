@@ -1,0 +1,36 @@
+@use "tokens";
+@use "mixins";
+
+* {
+  box-sizing: border-box;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  color: var(--color-text);
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-start) 0%,
+    var(--color-bg-end) 100%
+  );
+  background-attachment: fixed;
+}
+.container {
+  @include mixins.container;
+}

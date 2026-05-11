@@ -1,0 +1,64 @@
+// Design tokens — exposed as CSS custom properties so they're usable
+// anywhere without SCSS @use boilerplate.
+
+:root {
+  // Colors
+  --color-bg-start: #0d1e48;
+  --color-bg-end: #304571;
+  --color-bg-alt: #000000;
+  --color-accent: #ebff00;
+  --color-pink: #ff70d9;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  --color-overlay: rgba(15, 20, 32, 0.79);
+
+  // Radii
+  --radius-card: 10px;
+  --radius-pill: 100px;
+
+  // Container
+  --container-max: 1088px;
+  --container-max-tablet: 768px;
+  --container-max-mobile: 360px;
+  --container-pad: 24px;
+  --container-pad-tablet: 29px;
+  --container-pad-mobile: 20px;
+
+  // Typography — Hero
+  --fs-hero-title-desktop: 72px;
+  --fs-hero-title-tablet: 48px;
+  --fs-hero-title-mobile: 36px;
+  --fs-hero-text-desktop: 32px;
+  --fs-hero-text-tablet: 22px;
+  --fs-hero-text-mobile: 16px;
+
+  // Typography — Card
+  --fs-card-title-wide: 74px;
+  --fs-card-title-regular: 46px;
+  --fs-card-title-small: 40px;
+  --fs-card-text-wide: 26px;
+  --fs-card-text-regular: 24px;
+  --fs-card-text-small: 16px;
+
+  // Typography — Embark / Offers heading
+  --fs-h2-desktop: 32px;
+  --fs-h2-tablet: 24px;
+  --fs-h2-mobile: 18px;
+  --fs-body-desktop: 20px;
+  --fs-body-tablet: 16px;
+  --fs-body-mobile: 14px;
+
+  // Layout
+  --hero-height-desktop: 555px;
+  --hero-height-mobile: 500px;
+  --card-height: 350px;
+  --header-height-desktop: 80px;
+  --header-height-mobile: 48px;
+  --footer-height: 127px;
+
+  // Button
+  --btn-pad-lg: 14px 40px;
+  --btn-pad-sm: 7px 40px;
+  --btn-fs-lg: 22px;
+  --btn-fs-sm: 16px;
+}

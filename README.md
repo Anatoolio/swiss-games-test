@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# Swiss Games — Space Adventure
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Адаптивный лендинг по Figma-макету. Тестовое задание.
 
-## Available Scripts
+## Стек
 
-In the project directory, you can run:
+- **React 19** + Create React App (webpack 5)
+- **Sass** (`@use`, CSS custom properties)
+- **prop-types** для контрактов компонентов
 
-### `npm start`
+## Запуск
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install
+npm start          # dev-сервер http://localhost:3000
+npm run build      # production-сборка в build/
+npm run format     # prettier
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Структура проекта
 
-### `npm test`
+```text
+src/
+├── App.jsx                     — композиция верхнего уровня
+├── index.js                    — точка входа
+├── components/                 — компоненты с co-located стилями
+│   ├── Button.{jsx,scss}       — переиспользуемая кнопка (primary | outline | link)
+│   ├── Header.{jsx,scss}
+│   ├── Hero.{jsx,scss}
+│   ├── OfferCard.{jsx,scss}
+│   ├── OffersSection.{jsx,scss}
+│   ├── EmbarkSection.{jsx,scss}
+│   ├── Footer.{jsx,scss}
+│   └── index.js                — barrel-экспорт
+├── data/                       — контент отдельно от разметки
+│   ├── content.js              — тексты, акценты, лейблы
+│   └── offers.js               — массив карточек-офферов
+├── hooks/
+│   └── useMenuControls.js      — закрытие меню на Esc + клик снаружи
+├── icons/index.jsx             — React-компоненты SVG-иконок
+├── styles/
+│   ├── _tokens.scss            — design tokens как CSS-переменные
+│   ├── _mixins.scss            — mq(), button-base, container
+│   └── global.scss             — base + container, импортируется один раз
+└── img/                        — растровые ассеты (webp)
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Архитектура
 
-### `npm run build`
+### Дизайн-токены
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Все размеры, цвета и radii заданы как **CSS custom properties** в [src/styles/\_tokens.scss](src/styles/_tokens.scss). Это даёт два преимущества:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Один источник истины — поменять breakpoint-размер можно в одном месте.
+2. Доступны во всех `.scss` без `@use`-бойлерплейта (`var(--color-accent)`).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+SCSS-переменные используются только для брейкпоинтов (`$bp-tablet`, `$bp-mobile`), потому что media queries не понимают CSS custom properties.
 
-### `npm run eject`
+### Брейкпоинты
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Breakpoint | Max width   | Использование |
+| ---------- | ----------- | ------------- |
+| Desktop    | — (default) | ≥ 1025px      |
+| Tablet     | 1024px      | 601–1024      |
+| Mobile     | 600px       | ≤ 600         |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Мобильный брейкпоинт расширен до 600px (а не 360px из макета), чтобы реальные мобильные устройства попадали в mobile-стили — иначе на устройстве 414px (iPhone) применялись бы планшетные.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Кнопка
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`<Button variant="primary | outline | link" size="lg | sm" as="button | a">` —
+один компонент вместо дублирующихся CSS-блоков hero и card CTA. Стили — миксин
+`button-base` в [\_mixins.scss](src/styles/_mixins.scss).
 
-## Learn More
+### Тема карточки
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`OfferCard` пробрасывает фоновое изображение как CSS-переменную, а не inline-стиль:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```jsx
+<article data-theme={theme} style={{ '--card-bg': `url(${bgImage})` }}>
+```
 
-### Code Splitting
+Преимущество: вся стилизация остаётся в SCSS и подключается к hover-эффектам и media queries без правки JSX.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Контент отдельно от JSX
 
-### Analyzing the Bundle Size
+Цветные акценты в заголовке хранятся как данные:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```js
+hero: {
+  title: { before: 'Discover the vast expanses of ', accent: 'space' },
+}
+```
 
-### Making a Progressive Web App
+i18n-готовность без правки разметки.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Accessibility
 
-### Advanced Configuration
+- Семантические landmarks: `<header>`, `<main>`, `<nav aria-label="Primary">`, `<footer>`
+- Sections с `aria-labelledby` ссылаются на свои заголовки
+- Декоративные изображения (Earth, иконки внутри ссылок) скрыты `aria-hidden` и `alt=""`
+- Бургер-меню: `aria-expanded`, `aria-controls`, `aria-label` меняется по состоянию
+- Меню закрывается на Esc и клик снаружи ([useMenuControls](src/hooks/useMenuControls.js))
+- `:focus-visible` outline на интерактивных элементах
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Чего намеренно нет
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **TypeScript** — используется `prop-types` для контрактов; миграция вне scope тестового
+- **Vite** — оставлена CRA-сборка, миграция вне scope
+- **Тесты** — testing-library есть в зависимостях, юнит-тесты не писал (статичный лендинг)

@@ -1,0 +1,106 @@
+@use "../styles/mixins" as m;
+
+.hero {
+  position: relative;
+  height: var(--hero-height-desktop);
+  overflow: hidden;
+  background-image:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--color-overlay) 100%),
+    url("../img/Rectangle39610.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include m.tablet {
+    height: var(--hero-height-mobile);
+  }
+
+  &__layout {
+    height: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+    padding-top: 91px;
+
+    @include m.tablet {
+      padding-top: 70px;
+      gap: 24px;
+    }
+    @include m.mobile {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      padding-top: 0;
+    }
+  }
+
+  &__image {
+    width: 327px;
+    height: 367px;
+    display: block;
+    object-fit: contain;
+    justify-self: end;
+    @include m.tablet {
+      width: 265px;
+      height: 336px;
+    }
+    @include m.mobile {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    @include m.mobile {
+      padding-top: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: var(--fs-hero-title-desktop);
+    line-height: var(--fs-hero-title-desktop);
+    margin: 0 0 22px;
+    max-width: 700px;
+    @include m.tablet {
+      font-size: var(--fs-hero-title-tablet);
+      line-height: var(--fs-hero-title-tablet);
+      max-width: 420px;
+    }
+    @include m.mobile {
+      font-size: var(--fs-hero-title-mobile);
+      line-height: var(--fs-hero-title-mobile);
+      margin-bottom: 14px;
+    }
+  }
+  &__title-accent {
+    color: var(--color-pink);
+  }
+
+  &__text {
+    font-weight: 800;
+    font-size: var(--fs-hero-text-desktop);
+    line-height: 1.2;
+    margin: 0 0 22px;
+    @include m.tablet {
+      font-size: var(--fs-hero-text-tablet);
+    }
+    @include m.mobile {
+      font-size: var(--fs-hero-text-mobile);
+      margin-bottom: 18px;
+    }
+  }
+  &__text-accent {
+    color: var(--color-accent);
+  }
+}
