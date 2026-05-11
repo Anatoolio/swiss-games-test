@@ -1,0 +1,46 @@
+@use '../styles/mixins' as m;
+
+.embark {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 22px;
+    @include m.tablet {
+        margin-top: 10px;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    &__title {
+        margin: 0;
+        font-weight: 800;
+        font-size: var(--fs-h2-desktop);
+        line-height: 1.2;
+        @include m.tablet {
+            font-size: var(--fs-h2-tablet);
+        }
+        @include m.mobile {
+            font-size: var(--fs-h2-mobile);
+        }
+    }
+
+    &__text {
+        margin: 0;
+        font-weight: 700;
+        font-size: var(--fs-body-desktop);
+        line-height: 1.2;
+        color: var(--color-text-muted);
+        @include m.tablet {
+            font-size: var(--fs-body-tablet);
+        }
+        @include m.mobile {
+            font-size: var(--fs-body-mobile);
+        }
+    }
+}
