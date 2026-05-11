@@ -49,7 +49,7 @@ src/
 
 ### Дизайн-токены
 
-Все размеры, цвета и radii заданы как **CSS custom properties** в [src/styles/_tokens.scss](src/styles/_tokens.scss). Это даёт два преимущества:
+Все размеры, цвета и radii заданы как **CSS custom properties** в [src/styles/\_tokens.scss](src/styles/_tokens.scss). Это даёт два преимущества:
 
 1. Один источник истины — поменять breakpoint-размер можно в одном месте.
 2. Доступны во всех `.scss` без `@use`-бойлерплейта (`var(--color-accent)`).
@@ -70,7 +70,7 @@ SCSS-переменные используются только для брей�
 
 `<Button variant="primary | outline | link" size="lg | sm" as="button | a">` —
 один компонент вместо дублирующихся CSS-блоков hero и card CTA. Стили — миксин
-`button-base` в [_mixins.scss](src/styles/_mixins.scss).
+`button-base` в [\_mixins.scss](src/styles/_mixins.scss).
 
 ### Тема карточки
 

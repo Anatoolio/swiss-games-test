@@ -2,56 +2,56 @@ $bp-tablet: 1024px;
 $bp-mobile: 600px;
 
 @mixin tablet {
-    @media (max-width: $bp-tablet) {
-        @content;
-    }
+  @media (max-width: $bp-tablet) {
+    @content;
+  }
 }
 
 @mixin mobile {
-    @media (max-width: $bp-mobile) {
-        @content;
-    }
+  @media (max-width: $bp-mobile) {
+    @content;
+  }
 }
 
 // Shared button skeleton — visual variants override colors only.
 @mixin button-base {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    border-radius: var(--radius-pill);
-    font-family: 'Lato', sans-serif;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-    transition:
-        transform 0.15s ease,
-        opacity 0.2s ease;
-    padding: var(--btn-pad-lg);
-    font-size: var(--btn-fs-lg);
-    line-height: 1.2;
-    border: 2px solid transparent;
-    &:hover {
-        transform: translateY(-1px);
-        opacity: 0.6;
-    }
-    &:focus-visible {
-        outline: 2px solid var(--color-pink);
-        outline-offset: 3px;
-    }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: var(--radius-pill);
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease;
+  padding: var(--btn-pad-lg);
+  font-size: var(--btn-fs-lg);
+  line-height: 1.2;
+  border: 2px solid transparent;
+  &:hover {
+    transform: translateY(-1px);
+    opacity: 0.6;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-pink);
+    outline-offset: 3px;
+  }
 }
 
 @mixin container {
-    width: 100%;
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--container-pad);
-    @include tablet {
-        max-width: var(--container-max-tablet);
-        padding: 0 var(--container-pad-tablet);
-    }
-    @include mobile {
-        max-width: var(--container-max-mobile);
-        padding: 0 var(--container-pad-mobile);
-    }
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  @include tablet {
+    max-width: var(--container-max-tablet);
+    padding: 0 var(--container-pad-tablet);
+  }
+  @include mobile {
+    max-width: var(--container-max-mobile);
+    padding: 0 var(--container-pad-mobile);
+  }
 }

@@ -1,86 +1,90 @@
-@use '../styles/mixins' as m;
+@use "../styles/mixins" as m;
 
 .offer-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 35px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  height: var(--card-height);
+  color: var(--color-text);
+  background-image: var(--card-bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include m.tablet {
+    padding: 25px;
+  }
+
+  // Left-to-right gradient for legibility on dense art.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      var(--color-overlay) 0%,
+      rgba(15, 20, 32, 0) 100%
+    );
+    z-index: 1;
+  }
+
+  &--wide {
+    grid-column: 1 / -1;
+    @include m.tablet {
+      grid-column: auto;
+    }
+  }
+
+  &__body {
     position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 35px;
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    height: var(--card-height);
-    color: var(--color-text);
-    background-image: var(--card-bg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    gap: 22px;
+  }
 
+  &__title {
+    margin: 0;
+    font-weight: 800;
+    font-size: var(--fs-card-title-regular);
+    line-height: var(--fs-card-title-regular);
+    .offer-card--wide & {
+      font-size: var(--fs-card-title-wide);
+      line-height: var(--fs-card-title-wide);
+    }
     @include m.tablet {
-        padding: 25px;
+      font-size: var(--fs-card-title-small);
+      line-height: var(--fs-card-title-small);
+      .offer-card--wide & {
+        font-size: var(--fs-card-title-small);
+        line-height: var(--fs-card-title-small);
+      }
     }
+  }
 
-    // Left-to-right gradient for legibility on dense art.
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(90deg, var(--color-overlay) 0%, rgba(15, 20, 32, 0) 100%);
-        z-index: 1;
+  &__text {
+    margin: 0;
+    font-weight: 800;
+    font-size: var(--fs-card-text-regular);
+    line-height: 1.2;
+    .offer-card--wide & {
+      font-size: var(--fs-card-text-wide);
     }
+    @include m.tablet {
+      font-size: var(--fs-card-text-small);
+      .offer-card--wide & {
+        font-size: var(--fs-card-text-small);
+      }
+    }
+  }
 
-    &--wide {
-        grid-column: 1 / -1;
-        @include m.tablet {
-            grid-column: auto;
-        }
-    }
-
-    &__body {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        gap: 22px;
-    }
-
-    &__title {
-        margin: 0;
-        font-weight: 800;
-        font-size: var(--fs-card-title-regular);
-        line-height: var(--fs-card-title-regular);
-        .offer-card--wide & {
-            font-size: var(--fs-card-title-wide);
-            line-height: var(--fs-card-title-wide);
-        }
-        @include m.tablet {
-            font-size: var(--fs-card-title-small);
-            line-height: var(--fs-card-title-small);
-            .offer-card--wide & {
-                font-size: var(--fs-card-title-small);
-                line-height: var(--fs-card-title-small);
-            }
-        }
-    }
-
-    &__text {
-        margin: 0;
-        font-weight: 800;
-        font-size: var(--fs-card-text-regular);
-        line-height: 1.2;
-        .offer-card--wide & {
-            font-size: var(--fs-card-text-wide);
-        }
-        @include m.tablet {
-            font-size: var(--fs-card-text-small);
-            .offer-card--wide & {
-                font-size: var(--fs-card-text-small);
-            }
-        }
-    }
-
-    .btn {
-        position: relative;
-        z-index: 2;
-        align-self: flex-start;
-    }
+  .btn {
+    position: relative;
+    z-index: 2;
+    align-self: flex-start;
+  }
 }

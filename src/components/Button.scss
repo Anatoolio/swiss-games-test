@@ -1,41 +1,41 @@
-@use '../styles/mixins' as m;
+@use "../styles/mixins" as m;
 
 .btn {
-    @include m.button-base;
+  @include m.button-base;
 
-    &--primary {
-        background: var(--color-accent);
-        border-color: var(--color-accent);
-        color: #000;
-    }
+  &--primary {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #000;
+  }
 
-    &--outline {
-        background: transparent;
-        border-color: var(--color-accent);
-        color: var(--color-accent);
-    }
+  &--outline {
+    background: transparent;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
 
-    &--link {
-        background: transparent;
-        border: 0;
-        padding: 0;
-        color: var(--color-accent);
-        font-weight: 800;
-        &:hover {
-            transform: none;
-        }
+  &--link {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    color: var(--color-accent);
+    font-weight: 800;
+    &:hover {
+      transform: none;
     }
+  }
 
-    &--sm {
-        padding: var(--btn-pad-sm);
-        font-size: var(--btn-fs-sm);
-    }
+  &--sm {
+    padding: var(--btn-pad-sm);
+    font-size: var(--btn-fs-sm);
+  }
 
-    // Compact size on small viewports keeps action affordances proportional.
-    @include m.mobile {
-        &--lg {
-            padding: var(--btn-pad-sm);
-            font-size: var(--btn-fs-sm);
-        }
+  // Compact size on small viewports keeps action affordances proportional.
+  @include m.mobile {
+    &--lg {
+      padding: var(--btn-pad-sm);
+      font-size: var(--btn-fs-sm);
     }
+  }
 }
